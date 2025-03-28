@@ -1,0 +1,8 @@
+# Binary files
+# Rust specific ignores
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Debug files
+debug/
