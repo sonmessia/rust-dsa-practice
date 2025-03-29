@@ -3,4 +3,7 @@ fn main() {
     for i in 0..arr.len() {
         println!("{}", arr[i]);
     }
+    for &num in arr.iter() {
+        println!("{}", num);
+    }
 }
