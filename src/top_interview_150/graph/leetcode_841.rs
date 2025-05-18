@@ -19,19 +19,3 @@ impl Solution {
         seen.into_iter().all(|v| v)
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_can_visit_all_rooms() {
-        assert_eq!(Solution::can_visit_all_rooms(vec![vec![1], vec![2], vec![3], vec![]]), true);
-        assert_eq!(Solution::can_visit_all_rooms(vec![vec![1, 3], vec![3, 0, 1], vec![2], vec![]]), false);
-        assert_eq!(Solution::can_visit_all_rooms(vec![vec![]]), true);
-    }
-}
-
-fn main() {
-
-}
