@@ -1,37 +1,23 @@
-use std::collections::VecDeque;
 struct Solution;
 
 impl Solution {
-    pub fn can_visit_all_rooms(rooms: Vec<Vec<i32>>) -> bool {
-        let mut seen = vec![false; rooms.len()];
-        seen[0] = true;
-        let mut stack = VecDeque::new();
-        stack.push_back(0);
-        while let Some(node) = stack.pop_back() { 
-            for &nei in &rooms[node] {
-                if !seen[nei as usize] { 
-                    seen[nei as usize] = true; 
-                    stack.push_back(nei as usize); 
-                }
-            }
+    pub fn min_difference(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        if n <= 4 {
+            return 0;
         }
-
-        seen.into_iter().all(|v| v)
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_can_visit_all_rooms() {
-        assert_eq!(Solution::can_visit_all_rooms(vec![vec![1], vec![2], vec![3], vec![]]), true);
-        assert_eq!(Solution::can_visit_all_rooms(vec![vec![1, 3], vec![3, 0, 1], vec![2], vec![]]), false);
-        assert_eq!(Solution::can_visit_all_rooms(vec![vec![]]), true);
+        let mut nums = nums;
+        nums.sort();
+        let mut min_diff = i32::MAX;
+        for i in 0..4 {
+            let diff = nums[n - 4 + i] - nums[i];
+            min_diff = min_diff.min(diff);
+        }
+        min_diff
     }
 }
 
 fn main() {
-
+    let nums = vec![10, 1, 2, 7, 1, 3];
+    println!("Minimum difference: {}", Solution::min_difference(nums));
 }
