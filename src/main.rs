@@ -9,8 +9,8 @@ impl Solution {
         let mut nums = nums;
         nums.sort();
         let mut min_diff = i32::MAX;
-        for i in 0..4 {
-            let diff = nums[n - 4 + i] - nums[i];
+        for (left, right) in [(0, 3), (1, 2), (2, 1), (3, 0)] {
+            let diff = nums[n - 1 - right] - nums[left];
             min_diff = min_diff.min(diff);
         }
         min_diff
@@ -18,6 +18,6 @@ impl Solution {
 }
 
 fn main() {
-    let nums = vec![10, 1, 2, 7, 1, 3];
+    let nums = vec![1,5,0,10,14];
     println!("Minimum difference: {}", Solution::min_difference(nums));
 }
