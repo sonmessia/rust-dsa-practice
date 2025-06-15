@@ -1,5 +1,5 @@
 struct Solution;
-    
+
 impl Solution {
     pub fn max_diff(num: i32) -> i32 {
         let num_str = num.to_string();
@@ -28,8 +28,17 @@ impl Solution {
         max_num - min_num
     }
 }
-fn main() {
-    let nums = vec![1,2, 3, 4];
-    let bounds = vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5]];
-    println!("Count of valid arrays: {}", Solution::count_arrays(nums, bounds));
+
+#[cfg(test)]
+mod tests {
+    use super::Solution;
+
+    #[test]
+    fn test_max_diff() {
+        assert_eq!(Solution::max_diff(555), 888);
+        assert_eq!(Solution::max_diff(9), 8);
+        assert_eq!(Solution::max_diff(123456), 820000);
+        assert_eq!(Solution::max_diff(1001), 999);
+        assert_eq!(Solution::max_diff(0), 0);
+    }
 }
